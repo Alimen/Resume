@@ -16,6 +16,7 @@ var resume = (function() {
 	var backContext;
 
 	// Environmental variables
+	var env;
 	var screenWidth;
 	var screenHeight;
 
@@ -50,10 +51,12 @@ var resume = (function() {
 			drawload();
 			break;
 		case mainStates.reset:
-			//reset();
+			gameLogic.reset();
+			state = mainStates.game;
 			break;
 		case mainStates.game:
-			//drawBoard();
+			gameLogic.draw();
+			flip();
 			break;
 		}
 	}
@@ -64,6 +67,12 @@ var resume = (function() {
 //
 ///////////////////////////////////////////////////////////////////////////////
 
+	function eventKeyUp(e) {
+	}
+
+	function eventKeyDown(e) {
+	}
+
 	function resizeCanvas() {
 		screenWidth = window.innerWidth;
 		screenHeight = window.innerHeight;
@@ -71,6 +80,10 @@ var resume = (function() {
 		theCanvas.height = screenHeight;
 		backCanvas.width = screenWidth;
 		backCanvas.height = screenHeight;
+
+		if(state == mainStates.game) {
+			gameLogic.resize(screenWidth, screenHeight);
+		}
 	}
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -79,7 +92,7 @@ var resume = (function() {
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-	// Pre-loader counters
+	// Loader counters
 	var itemsToLoad = 4;
 	var loadCount = 0;
 
@@ -102,7 +115,16 @@ var resume = (function() {
 		resizeCanvas();
 
 		// Setup events
+		document.addEventListener("keyup", eventKeyUp, true);
+		document.addEventListener("keydown", eventKeyDown, true);
 		window.addEventListener('resize', resizeCanvas, false);
+		
+		// Prepare global variables
+		env = {
+			mainStates : mainStates,
+			screenWidth : screenWidth,
+			screenHeight : screenHeight
+		};
 
 		// Switch to next state
 		state = mainStates.loading;
@@ -127,8 +149,24 @@ var resume = (function() {
 	function eventItemLoaded(e) {
 		loadCount++;
 		if(loadCount == itemsToLoad) {
-			//state = mainStates.reset;
+			gameLogic.init(env, {
+				avatarP : imgAvatarP,
+				avatarN : imgAvatarN,
+				brickP : imgBrickP,
+				brickN : imgBrickN,
+			}, backContext);
+			state = mainStates.reset;
 		}
+	}
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// General utilities
+//
+///////////////////////////////////////////////////////////////////////////////
+
+	function flip() {
+		context.drawImage(backCanvas, 0, 0);
 	}
 
 ///////////////////////////////////////////////////////////////////////////////
