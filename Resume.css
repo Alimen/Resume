@@ -1,12 +1,67 @@
 body {
 	font-family: sans-serif,"微軟正黑體","新細明體";
+	font-size: 11pt;
+	display: inline-block;
 }
 
-.event {
+.timeEvent {
 	position: absolute;
+	top: 50%;
+	overflow: hidden;
+	padding: 10px 20px 10px 10px;
+	border: 0px;
+	height: auto;
+	width: auto;
+	
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;	
+}
+
+.upBlock {
+	margin-top: -400px;
+	color: #ffffff;
+	background: #009999;
+}
+
+.downBlock {
+	margin-top: 200px;
+	color: #003333;
+	background: #ffffff;
+}
+
+.restrict {
+	height: 2.5em;
 }
 
 .description {
 	display: none;
+	max-width: 22em;
+	margin-left: -1.5em;
+}
+
+h1 {
+	font-size: 12pt;
+	line-height: 150%;
+}
+
+li {
+	margin-bottom: 0.3em;
+}
+
+a:link {
+	color: #003333;
+}
+
+a:visited {
+	color: #006363;
+}
+
+a:hover {
+	color: #003333;
+}
+
+a:active {
+	color: #006363;
 }
 
