@@ -68,9 +68,11 @@ var resume = (function() {
 ///////////////////////////////////////////////////////////////////////////////
 
 	function eventKeyUp(e) {
+		gameLogic.eventKeyUp(e);
 	}
 
 	function eventKeyDown(e) {
+		gameLogic.eventKeyDown(e);
 	}
 
 	function resizeCanvas() {
