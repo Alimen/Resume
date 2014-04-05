@@ -10,6 +10,12 @@ var level = (function() {
 		backContext = _backContext;
 	}
 
+///////////////////////////////////////////////////////////////////////////////
+//
+// Text block subroutines
+//
+///////////////////////////////////////////////////////////////////////////////
+
 	// Text block parameters (#id, position-x, expanded)
 	var textBlocksP = [
 		["#work0", 1500, 0],
@@ -32,7 +38,7 @@ var level = (function() {
 		for(var i = 0; i < textBlocksP.length; i++) {
 			$(textBlocksP[i][0]).css("marginLeft", (textBlocksP[i][1] + screenX) + "px");
 
-			if(textBlocksP[i][1]-50+screenX < px && px <= textBlocksP[i][1]+500+screenX) {
+			if(textBlocksP[i][1]-50 < px && px <= textBlocksP[i][1]+500) {
 				if(textBlocksP[i][2] == 0) {
 					$(textBlocksP[i][0]).find(".description").slideToggle();
 					textBlocksP[i][2] = 1;
@@ -49,7 +55,7 @@ var level = (function() {
 		for(var i = 0; i < textBlocksN.length; i++) {
 			$(textBlocksN[i][0]).css("marginLeft", (textBlocksN[i][1] + screenX) + "px");
 
-			if(textBlocksN[i][1]-50+screenX < nx && nx <= textBlocksN[i][1]+500+screenX) {
+			if(textBlocksN[i][1]-50 < nx && nx <= textBlocksN[i][1]+500) {
 				if(textBlocksN[i][2] == 0) {
 					$(textBlocksN[i][0]).removeClass("restrict");
 					$(textBlocksN[i][0]).find(".description").slideToggle();
@@ -64,6 +70,12 @@ var level = (function() {
 			}
 		}
 	}
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Background object subroutines
+//
+///////////////////////////////////////////////////////////////////////////////
 
 	// Background object parameters (image#ID position-x, position-y, width, height)
 	var bgObjects = [
@@ -107,10 +119,77 @@ var level = (function() {
 		env.screenHeight = _height;
 	}
 
+///////////////////////////////////////////////////////////////////////////////
+//
+// Foreground object subroutines
+//
+///////////////////////////////////////////////////////////////////////////////
+
+	// Foreground object parameters (visible, x, y, width, height)
+	var brickP = [
+		[true, -512, 1024, 512, 1024],
+		[true, 900, 128, 32, 128]
+	];
+	var brickN = [
+		[true, -512, 0, 512, 1024],
+		[true, 950, 0, 32, 128]
+	];
+
+	// Detect collidings
+	// dir: 0 == left,  1 == top,  2 == right,  3 == bottom
+	function collideTestP(px, py) {
+		var x, y, w, h;
+		for(var i = 0; i < brickP.length; i++) {
+			x = brickP[i][1];
+			y = brickP[i][2];
+			w = brickP[i][3];
+			h = brickP[i][4];
+
+			if(px-32 <= x+w && px+32 >= x && py <= y && py+64 >= y-h) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	function collideTestN(nx, ny) {
+		var x, y, w, h;
+		for(var i = 0; i < brickN.length; i++) {
+			x = brickN[i][1];
+			y = brickN[i][2];
+			w = brickN[i][3];
+			h = brickN[i][4];
+
+			if(nx-32 <= x+w && nx+32 >= x && (-1)*ny <= y && (-1)*(ny+64) >= y-h) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	function drawBricks(screenX) {
+		var i;
+		for(i = 0; i < brickP.length; i++) {
+			if(brickP[i][0]) {
+				backContext.drawImage(img.brickP, 0, 0, 8, 8, brickP[i][1] + screenX, env.screenHeight/2 - brickP[i][2], brickP[i][3], brickP[i][4]);
+			}
+		}
+		for(i = 0; i < brickN.length; i++) {
+			if(brickN[i][0]) {
+				backContext.drawImage(img.brickN, 0, 0, 8, 8, brickN[i][1] + screenX, env.screenHeight/2 - brickN[i][2], brickN[i][3], brickN[i][4]);
+			}
+		}
+	}
+
 	return {
 		init : init,
 		resize : resize,
+
 		updateTextBlocks : updateTextBlocks,
-		updateBgObjects : updateBgObjects
+		updateBgObjects : updateBgObjects,
+
+		collideTestP : collideTestP,
+		collideTestN : collideTestN,
+		drawBricks : drawBricks
 	};
 })();
