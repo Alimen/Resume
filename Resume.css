@@ -1,17 +1,16 @@
 body {
 	font-family: sans-serif,"微軟正黑體","新細明體";
 	font-size: 11pt;
-	display: inline-block;
 }
 
 .timeEvent {
 	position: absolute;
 	top: 50%;
 	overflow: hidden;
-	padding: 10px 20px 10px 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
 	border: 0px;
-	height: auto;
-	width: auto;
 	
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
@@ -30,14 +29,10 @@ body {
 	background: #ffffff;
 }
 
-.restrict {
-	height: 2.5em;
-}
-
 .description {
 	display: none;
-	max-width: 22em;
 	margin-left: -1.5em;
+	padding-top: 1px;
 }
 
 h1 {

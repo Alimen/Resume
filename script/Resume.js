@@ -68,10 +68,16 @@ var resume = (function() {
 ///////////////////////////////////////////////////////////////////////////////
 
 	function eventKeyUp(e) {
+		if(e.keyCode == 37 || e.keyCode == 39) {
+			e.preventDefault();
+		}
 		gameLogic.eventKeyUp(e);
 	}
 
 	function eventKeyDown(e) {
+		if(e.keyCode == 37 || e.keyCode == 39) {
+			e.preventDefault();
+		}
 		gameLogic.eventKeyDown(e);
 	}
 

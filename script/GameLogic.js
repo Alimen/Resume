@@ -75,7 +75,7 @@ var gameLogic = (function() {
 		const moveSpeed = 7;
 
 		if(keyLeft == 1) {
-			if(avatarPx >= 150) {
+			if(avatarPx >= 400) {
 				avatarPx -= moveSpeed;
 				avatarNx -= moveSpeed;
 			} else {
@@ -83,7 +83,7 @@ var gameLogic = (function() {
 			}
 		}
 		if(keyRight == 1) {
-			if(avatarPx < env.screenWidth-150) {
+			if(avatarPx < env.screenWidth-400) {
 				avatarPx += moveSpeed;
 				avatarNx += moveSpeed;
 			} else {
@@ -94,7 +94,7 @@ var gameLogic = (function() {
 
 	function draw() {
 		push();
-		level.updateTextBlocks(screenX);
+		level.updateTextBlocks(screenX, avatarPx, avatarNx);
 
 		// Clear Background
 		backContext.fillStyle = "#FFFFFF";
