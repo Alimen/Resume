@@ -23,13 +23,15 @@ var gameLogic = (function() {
 		env = _env;
 		img = _img;
 		backContext = _backContext;
+
+		level.init(_env, _img, _backContext);
 	}
 
 	function reset() {
 		screenX = 0;
-		avatarPx = 100;
+		avatarPx = 410;
 		avatarPy = 0;
-		avatarNx = 100;
+		avatarNx = 410;
 		avatarNy = 0;
 
 		keyLeft = 0;
@@ -63,6 +65,7 @@ var gameLogic = (function() {
 	function resize(_width, _height) {
 		env.screenWidth = _width;
 		env.screenHeight = _height;
+		level.resize(_width, _height);
 	}
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -72,7 +75,7 @@ var gameLogic = (function() {
 ///////////////////////////////////////////////////////////////////////////////
 
 	function push() {
-		const moveSpeed = 7;
+		const moveSpeed = 10;
 
 		if(keyLeft == 1) {
 			if(avatarPx >= 400) {
@@ -102,6 +105,9 @@ var gameLogic = (function() {
 
 		// Draw horizon
 		backContext.drawImage(img.brickP, 0, 0, 8, 8, 0, env.screenHeight/2, env.screenWidth, env.screenHeight/2);
+
+		// Draw background objects
+		level.updateBgObjects(screenX);
 
 		// Draw avators
 		backContext.drawImage(img.avatarP, avatarPx-32, env.screenHeight/2 + avatarPy - 64);

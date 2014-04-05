@@ -25,6 +25,12 @@ var resume = (function() {
 	var imgAvatarN = new Image();
 	var imgBrickP = new Image();
 	var imgBrickN = new Image();
+	var imgLogo = new Image();
+	var imgInstruct = new Image();
+	var imgMountPL = new Image();
+	var imgMountPS = new Image();
+	var imgMountNL = new Image();
+	var imgMountNS = new Image();
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -101,7 +107,7 @@ var resume = (function() {
 ///////////////////////////////////////////////////////////////////////////////
 
 	// Loader counters
-	var itemsToLoad = 4;
+	var itemsToLoad = 10;
 	var loadCount = 0;
 
 	function init() {
@@ -114,6 +120,18 @@ var resume = (function() {
 		imgBrickP.onload = eventItemLoaded;
 		imgBrickN.src = "image/BrickN.png";
 		imgBrickN.onload = eventItemLoaded;
+		imgLogo.src = "image/HTML5_Logo.png";
+		imgLogo.onload = eventItemLoaded;
+		imgInstruct.src = "image/Instructions.png";
+		imgInstruct.onload = eventItemLoaded;
+		imgMountPL.src = "image/MountPL.png";
+		imgMountPL.onload = eventItemLoaded;
+		imgMountPS.src = "image/MountPS.png";
+		imgMountPS.onload = eventItemLoaded;
+		imgMountNL.src = "image/MountNL.png";
+		imgMountNL.onload = eventItemLoaded;
+		imgMountNS.src = "image/MountNS.png";
+		imgMountNS.onload = eventItemLoaded;
 
 		// Setup canvas
 		theCanvas = document.getElementById("canvas");
@@ -162,6 +180,12 @@ var resume = (function() {
 				avatarN : imgAvatarN,
 				brickP : imgBrickP,
 				brickN : imgBrickN,
+				logo : imgLogo,
+				ins : imgInstruct,
+				mountPL : imgMountPL,
+				mountPS : imgMountPS,
+				mountNL : imgMountNL,
+				mountNS : imgMountNS
 			}, backContext);
 			state = mainStates.reset;
 		}
