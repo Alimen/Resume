@@ -16,6 +16,7 @@ var resume = (function() {
 	var backContext;
 
 	// Environmental variables
+	var env;
 	var screenWidth;
 	var screenHeight;
 
@@ -24,6 +25,12 @@ var resume = (function() {
 	var imgAvatarN = new Image();
 	var imgBrickP = new Image();
 	var imgBrickN = new Image();
+	var imgLogo = new Image();
+	var imgInstruct = new Image();
+	var imgMountPL = new Image();
+	var imgMountPS = new Image();
+	var imgMountNL = new Image();
+	var imgMountNS = new Image();
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -50,10 +57,12 @@ var resume = (function() {
 			drawload();
 			break;
 		case mainStates.reset:
-			//reset();
+			gameLogic.reset();
+			state = mainStates.game;
 			break;
 		case mainStates.game:
-			//drawBoard();
+			gameLogic.draw();
+			flip();
 			break;
 		}
 	}
@@ -64,6 +73,20 @@ var resume = (function() {
 //
 ///////////////////////////////////////////////////////////////////////////////
 
+	function eventKeyUp(e) {
+		if(e.keyCode == 37 || e.keyCode == 39) {
+			e.preventDefault();
+		}
+		gameLogic.eventKeyUp(e);
+	}
+
+	function eventKeyDown(e) {
+		if(e.keyCode == 37 || e.keyCode == 39 || e.keyCode == 38) {
+			e.preventDefault();
+		}
+		gameLogic.eventKeyDown(e);
+	}
+
 	function resizeCanvas() {
 		screenWidth = window.innerWidth;
 		screenHeight = window.innerHeight;
@@ -71,6 +94,10 @@ var resume = (function() {
 		theCanvas.height = screenHeight;
 		backCanvas.width = screenWidth;
 		backCanvas.height = screenHeight;
+
+		if(state == mainStates.game) {
+			gameLogic.resize(screenWidth, screenHeight);
+		}
 	}
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -79,8 +106,8 @@ var resume = (function() {
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-	// Pre-loader counters
-	var itemsToLoad = 4;
+	// Loader counters
+	var itemsToLoad = 10;
 	var loadCount = 0;
 
 	function init() {
@@ -93,6 +120,18 @@ var resume = (function() {
 		imgBrickP.onload = eventItemLoaded;
 		imgBrickN.src = "image/BrickN.png";
 		imgBrickN.onload = eventItemLoaded;
+		imgLogo.src = "image/HTML5_Logo.png";
+		imgLogo.onload = eventItemLoaded;
+		imgInstruct.src = "image/Instructions.png";
+		imgInstruct.onload = eventItemLoaded;
+		imgMountPL.src = "image/MountPL.png";
+		imgMountPL.onload = eventItemLoaded;
+		imgMountPS.src = "image/MountPS.png";
+		imgMountPS.onload = eventItemLoaded;
+		imgMountNL.src = "image/MountNL.png";
+		imgMountNL.onload = eventItemLoaded;
+		imgMountNS.src = "image/MountNS.png";
+		imgMountNS.onload = eventItemLoaded;
 
 		// Setup canvas
 		theCanvas = document.getElementById("canvas");
@@ -102,7 +141,16 @@ var resume = (function() {
 		resizeCanvas();
 
 		// Setup events
+		document.addEventListener("keyup", eventKeyUp, true);
+		document.addEventListener("keydown", eventKeyDown, true);
 		window.addEventListener('resize', resizeCanvas, false);
+		
+		// Prepare global variables
+		env = {
+			mainStates : mainStates,
+			screenWidth : screenWidth,
+			screenHeight : screenHeight
+		};
 
 		// Switch to next state
 		state = mainStates.loading;
@@ -127,8 +175,30 @@ var resume = (function() {
 	function eventItemLoaded(e) {
 		loadCount++;
 		if(loadCount == itemsToLoad) {
-			//state = mainStates.reset;
+			gameLogic.init(env, {
+				avatarP : imgAvatarP,
+				avatarN : imgAvatarN,
+				brickP : imgBrickP,
+				brickN : imgBrickN,
+				logo : imgLogo,
+				ins : imgInstruct,
+				mountPL : imgMountPL,
+				mountPS : imgMountPS,
+				mountNL : imgMountNL,
+				mountNS : imgMountNS
+			}, backContext);
+			state = mainStates.reset;
 		}
+	}
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// General utilities
+//
+///////////////////////////////////////////////////////////////////////////////
+
+	function flip() {
+		context.drawImage(backCanvas, 0, 0);
 	}
 
 ///////////////////////////////////////////////////////////////////////////////
