@@ -81,7 +81,7 @@ var resume = (function() {
 	}
 
 	function eventKeyDown(e) {
-		if(e.keyCode == 37 || e.keyCode == 39) {
+		if(e.keyCode == 37 || e.keyCode == 39 || e.keyCode == 38) {
 			e.preventDefault();
 		}
 		gameLogic.eventKeyDown(e);
