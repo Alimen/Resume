@@ -129,6 +129,8 @@ var gameLogic = (function() {
 				avatarNx += res;
 			}
 		}
+		avatarPx = (avatarPx+10000) % 10000;
+		avatarNx = (avatarNx+10000) % 10000;
 
 		// Handle gravity
 		speedPy += gP;
@@ -169,6 +171,8 @@ var gameLogic = (function() {
 		}
 
 		// Handle screenX movements
+		// chasing == 1, go left.
+		// chasing == 2, go right.
 		var target, amount;
 		if(chasing == 1) {
 			if(avatarPx < avatarNx) {
@@ -197,6 +201,8 @@ var gameLogic = (function() {
 				screenX -= amount;
 			}
 		}
+		//screenX = (screenX-10000) % 10000;
+		//console.log(screenX);
 	}
 
 	function draw() {
