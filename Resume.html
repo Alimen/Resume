@@ -5,8 +5,12 @@
 	<title>Alimen's Resume | 2014</title>
 	<style>
 		@import url(Resume.css);
+		#tinybox {position:absolute; display:none; padding:10px; background:#fff url(image/preload.gif) no-repeat 50% 50%; border:10px solid #e3e3e3; z-index:2000}
+		#tinymask {position:absolute; display:none; top:0; left:0; height:100%; width:100%; background:#000; z-index:1500}
+		#tinycontent {background:#fff}
 	</style>
 	<script src="script/jquery-1.11.0.min.js"></script>
+	<script src="script/tinybox.js"></script>
 	<script src="script/Level.js"></script>
 	<script src="script/GameLogic.js"></script>
 	<script src="script/Resume.js"></script>
@@ -63,7 +67,7 @@
 		<div id="game0" class="timeEvent downBlock" style="width: 468px;">
 			<div style="overflow: auto"><h1><a href="http://tw.battle.net/sc2/zh/blog/12426484/" target="_blink">...更多的水晶塔！</a> (2014)</h1></div>
 			<div class="description" style="width: 100%;">
-				<img style="float:right; margin-left: 10px;" src="image/Thumbnails/YMCAP.jpg"></img>
+				<img id="game0thumb" style="float:right; margin-left: 10px;" src="image/Thumbnails/YMCAP.jpg"></img>
 				<div><ul>
 					<li>使用 StarCraft II Editor 獨立製作
 					<li>榮獲台灣暴雪《自訂地圖競賽II》大賽優勝
@@ -73,7 +77,7 @@
 		<div id="game1" class="timeEvent downBlock" style="width: 511px">
 			<div style="overflow: auto"><h1><a href="http://fgj.igda.jp/dokuwiki/doku.php?id=team:taipeiiii_e" target="_blink">遊びはトイレのあとで</a> (2013)</h1></div>
 			<div class="description" style="width: 100%;">
-				<img style="float: right; margin-left: 10px;" src="image/Thumbnails/Toilet.jpg"></img>
+				<img id="game1thumb" style="float: right; margin-left: 10px;" src="image/Thumbnails/Toilet.jpg"></img>
 				<div><ul>
 					<li>Fukushima Game Jam 2013 活動成果
 					<li>負責角色控制、(部分)關卡障礙物動作、程式整合、Wiki頁面編寫
@@ -83,7 +87,7 @@
 		<div id="game2" class="timeEvent downBlock" style="width: 450px">
 			<div style="overflow: auto"><h1><a href="http://alimencave.blogspot.tw/2013/05/blog-post_28.html" target="_blink">Rally-Man</a> (2013)</h1></div>
 			<div class="description" style="width: 100%;">
-				<img style="float: right; margin-left: 10px;" src="image/Thumbnails/Rally.jpg"></img>
+				<img id="game2thumb" style="float: right; margin-left: 10px;" src="image/Thumbnails/Rally.jpg"></img>
 				<div><ul>
 					<li>動畫《Cowboy Bebop》同人遊戲
 					<li>初探Unity3D工作環境
@@ -93,7 +97,7 @@
 		<div id="game3" class="timeEvent downBlock" style="width: 460px">
 			<div style="overflow: auto"><h1><a href="http://alimencave.blogspot.tw/2013/05/np-lab.html" target="_blink">NP Lab: Coloring Problem</a> (2013)</h1></div>
 			<div class="description" style="width: 100%;">
-				<img style="float: right; margin-left: 10px;" src="image/Thumbnails/NPLab.jpg"></img>
+				<img id="game3thumb" style="float: right; margin-left: 10px;" src="image/Thumbnails/NPLab.jpg"></img>
 				<div><ul>
 					<li>HTML5 + Javascript綜合習作
 					<li>實作二維二骨骼反向動力學解算
@@ -103,7 +107,7 @@
 		<div id="game4" class="timeEvent downBlock" style="width: 496px">
 			<div style="overflow: auto"><h1><a href="http://alimencave.blogspot.tw/2012/02/05lbslua-based-barrage-system-ver05.html" target="_blink">0.5 Lbs</a> (2012)</h1></div>
 				<div class="description" style="width: 100%;">
-				<img style="float: right; margin-left: 10px;" src="image/Thumbnails/Bullets.jpg"></img>
+				<img id="game4thumb" style="float: right; margin-left: 10px;" src="image/Thumbnails/Bullets.jpg"></img>
 				<div><ul>
 					<li>嵌入Lua引擎實作彈幕腳本描述系統
 					<li>利用OpenGL 2D + GLUT撰寫使用者介面
@@ -113,7 +117,7 @@
 		<div id="game5" class="timeEvent downBlock" style="width: 511px">
 			<div style="overflow: auto"><h1>Elemard Dream (2011)</h1></div>
 			<div class="description" style="width: 100%;">
-				<img style="float: right; margin-left: 10px;" src="image/Thumbnails/Dream.jpg"></img>
+				<img id="game5thumb" style="float: right; margin-left: 10px;" src="image/Thumbnails/Dream.jpg"></img>
 				<div><ul>
 					<li>DirectX 10為基礎的3D遊戲引擎試作
 					<li>利用geometry shaders自動生成shadow volume
@@ -125,7 +129,7 @@
 		<div id="game6" class="timeEvent downBlock" style="width: 408px">
 			<div style="overflow: auto;"><h1>Museum (2008)</h1></div>
 			<div class="description" style="width: 100%;">
-				<img style="float: right; margin-left: 10px;" src="image/Thumbnails/Museum.jpg"></img>
+				<img id="game6thumb" style="float: right; margin-left: 10px;" src="image/Thumbnails/Museum.jpg"></img>
 				<div><ul>
 					<li>OpenGL 3D + GLUT習做
 					<li>可讀入自定格式的模型檔案
@@ -133,5 +137,14 @@
 			<div style="height: 15px; padding: 0; clear: both;"></div>
 		</div>
 	</div>
+	<script>
+		T$('game0thumb').onclick = function() {TINY.box.show("<img src='image/YMCAP.jpg' width='800' height='600' alt='' />", 0, 0, 0, 1);}
+		T$('game1thumb').onclick = function() {TINY.box.show("<img src='image/Toilet.jpg' width='765' height='411' alt='' />", 0, 0, 0, 1);}
+		T$('game2thumb').onclick = function() {TINY.box.show("<img src='image/Rally.jpg' width='797' height='795' alt='' />", 0, 0, 0, 1);}
+		T$('game3thumb').onclick = function() {TINY.box.show("<img src='image/NPLab.jpg' width='800' height='480' alt='' />", 0, 0, 0, 1);}
+		T$('game4thumb').onclick = function() {TINY.box.show("<img src='image/Bullets.jpg' width='800' height='600' alt='' />", 0, 0, 0, 1);}
+		T$('game5thumb').onclick = function() {TINY.box.show("<img src='image/Dream.jpg' width='800' height='600' alt='' />", 0, 0, 0, 1);}
+		T$('game6thumb').onclick = function() {TINY.box.show("<img src='image/Museum.jpg' width='800' height='600' alt='' />", 0, 0, 0, 1);}
+	</script>
 </body>
 </html>

@@ -3,6 +3,10 @@ body {
 	font-size: 11pt;
 }
 
+.description img {
+	cursor: pointer;
+}
+
 .timeEvent {
 	position: absolute;
 	top: 50%;
