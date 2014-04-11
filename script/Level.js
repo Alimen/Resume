@@ -24,13 +24,13 @@ var level = (function() {
 		["#school1", 4500, false]
 	];
 	var textBlocksN = [
-		["#game0", 1000, false],
-		["#game1", 1600, false],
-		["#game2", 2200, false],
-		["#game3", 2800, false],
-		["#game4", 3400, false],
-		["#game5", 4000, false],
-		["#game6", 4600, false]
+		["#game0", 1200, false],
+		["#game1", 2000, false],
+		["#game2", 5000, false],
+		["#game3", 6000, false],
+		["#game4", 7000, false],
+		["#game5", 8000, false],
+		["#game6", 9000, false]
 	];
 
 	function updateTextBlocks(screenX, px, nx) {
@@ -129,13 +129,14 @@ var level = (function() {
 	var bricks = [
 		// Positive bricks
 		[true, true, -512, 1024, 512, 1024],	// left bound
-		[true, false, 0, 0, 10000, 32],		// floor
-		[true, true, 900, 128, 32, 128],
+		[true, false, 0, 0, 10000, 32],			// floor
+		[true, true, 900, 100, 420, 100],
+		[true, true, 1230, 200, 90, 100],
 
 		// Negative bricks
 		[false, true, -512, 0, 512, 1024],		// left bound
 		[false, false, 0, 32, 10000, 32],		// floor
-		[false, true, 950, 0, 32, 128]
+		[false, true, 980, 0, 80, 110],
 	];
 
 	// Detect collidings

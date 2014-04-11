@@ -1,5 +1,6 @@
 var resume = (function() {
 	if(!canvasSupport) {
+		document.location.href = "Unsupported.html";
 		return;
 	}
 	
@@ -39,7 +40,7 @@ var resume = (function() {
 ///////////////////////////////////////////////////////////////////////////////
 
 	// State enumeration
-	const mainStates = {
+	var mainStates = {
 		unknown		: -1,
 		initial		: 0, 
 		loading		: 1,
@@ -208,7 +209,7 @@ var resume = (function() {
 ///////////////////////////////////////////////////////////////////////////////
 
 	function startMessageLoop() {
-		const FPS = 30;
+		var FPS = 30;
 		var intervalTime = 1000 / FPS;
 		setInterval(timerTick, intervalTime);
 	}

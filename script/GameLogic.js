@@ -41,6 +41,9 @@ var gameLogic = (function() {
 		keyRight = false;
 		keyUp = false;
 		chasing = 0;
+
+		level.updateTextBlocks(screenX, avatarPx, avatarNx);
+		$(".timeEvent").show();
 	}
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -70,7 +73,16 @@ var gameLogic = (function() {
 			keyRight = true;
 			chasing = 2;
 		}
-		if(e.keyCode == 38) {
+		if(e.keyCode == 38 && keyUp == false) {
+			var res;
+			res = level.collideTest(avatarPx, avatarPy, true, 3, moveSpeed);
+			if(res < moveSpeed) {
+				speedPy = 50;
+			}
+			res = level.collideTest(avatarNx, avatarNy, false, 1, moveSpeed);
+			if(res < moveSpeed) {
+				speedNy = -50;
+			}
 			keyUp = true;
 		}
 	}
@@ -87,11 +99,11 @@ var gameLogic = (function() {
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-	// Object speed settings
-	const moveSpeed = 12;
-	const chaseSpeed = 50;
-	const gP = -5;
-	const gN = 5;
+	// Object speed constants
+	var moveSpeed = 12;
+	var chaseSpeed = 50;
+	var gP = -5;
+	var gN = 5;
 
 	function push() {
 		var res;
@@ -115,18 +127,6 @@ var gameLogic = (function() {
 			res = level.collideTest(avatarNx, avatarNy-64, false, 2, moveSpeed);
 			if(res > 0) {
 				avatarNx += res;
-			}
-		}
-
-		// Handle jump movements
-		if(keyUp) {
-			res = level.collideTest(avatarPx, avatarPy, true, 3, moveSpeed);
-			if(res < moveSpeed) {
-				speedPy = 50;
-			}
-			res = level.collideTest(avatarNx, avatarNy, false, 1, moveSpeed);
-			if(res < moveSpeed) {
-				speedNy = -50;
 			}
 		}
 
