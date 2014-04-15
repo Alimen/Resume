@@ -32,6 +32,8 @@ var resume = (function() {
 	var imgMountPS = new Image();
 	var imgMountNL = new Image();
 	var imgMountNS = new Image();
+	var imgFlagP = new Image();
+	var imgFlagN = new Image();
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -108,7 +110,7 @@ var resume = (function() {
 ///////////////////////////////////////////////////////////////////////////////
 
 	// Loader counters
-	var itemsToLoad = 10;
+	var itemsToLoad = 12;
 	var loadCount = 0;
 
 	function init() {
@@ -133,6 +135,10 @@ var resume = (function() {
 		imgMountNL.onload = eventItemLoaded;
 		imgMountNS.src = "image/MountNS.png";
 		imgMountNS.onload = eventItemLoaded;
+		imgFlagP.src = "image/FlagP.png";
+		imgFlagP.onload = eventItemLoaded;
+		imgFlagN.src = "image/FlagN.png";
+		imgFlagN.onload = eventItemLoaded;
 
 		// Setup canvas
 		theCanvas = document.getElementById("canvas");
@@ -186,7 +192,9 @@ var resume = (function() {
 				mountPL : imgMountPL,
 				mountPS : imgMountPS,
 				mountNL : imgMountNL,
-				mountNS : imgMountNS
+				mountNS : imgMountNS,
+				flagP : imgFlagP,
+				flagN : imgFlagN
 			}, backContext);
 			state = mainStates.reset;
 		}
