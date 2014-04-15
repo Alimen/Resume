@@ -1,0 +1,67 @@
+body {
+	font-family: sans-serif,"微軟正黑體","新細明體";
+	font-size: 11pt;
+}
+
+.description img {
+	cursor: pointer;
+}
+
+.timeEvent {
+	position: absolute;
+	top: 50%;
+	overflow: hidden;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+	border: 0px;
+	display: none;
+	
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;	
+}
+
+.upBlock {
+	margin-top: -400px;
+	color: #ffffff;
+	background: #009999;
+}
+
+.downBlock {
+	margin-top: 200px;
+	color: #003333;
+	background: #ffffff;
+}
+
+.description {
+	display: none;
+	margin-left: -1.5em;
+	padding-top: 1px;
+}
+
+h1 {
+	font-size: 12pt;
+	line-height: 150%;
+}
+
+li {
+	margin-bottom: 0.3em;
+}
+
+a:link {
+	color: #003333;
+}
+
+a:visited {
+	color: #006363;
+}
+
+a:hover {
+	color: #003333;
+}
+
+a:active {
+	color: #006363;
+}
+

@@ -1,71 +1,148 @@
 <!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Resume by Alimen</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Resume</h1>
-        <p>A HTML5 platform game presenting my personal resume</p>
-
-        <p class="view"><a href="https://github.com/Alimen/Resume">View the Project on GitHub <small>Alimen/Resume</small></a></p>
-
-
-        <ul>
-          <li><a href="https://github.com/Alimen/Resume/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/Alimen/Resume/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/Alimen/Resume">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/Alimen">Alimen</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+<html lang="zh-tw">
+<head>
+	<meta charset="UTF-8">
+	<title>Alimen's Resume | 2014</title>
+	<style>
+		@import url(Resume.css);
+		#tinybox {position:absolute; display:none; padding:10px; background:#fff url(image/preload.gif) no-repeat 50% 50%; border:10px solid #e3e3e3; z-index:2000}
+		#tinymask {position:absolute; display:none; top:0; left:0; height:100%; width:100%; background:#000; z-index:1500}
+		#tinycontent {background:#fff}
+	</style>
+	<script src="script/jquery-1.11.0.min.js"></script>
+	<script src="script/tinybox.js"></script>
+	<script src="Resume_release.js"></script>
+</head>
+<body style="width: 100%; height: 100%; margin: 0; border: 0; overflow: hidden; display: block;">
+	<div style="position: relative;">
+		<canvas id="canvas" width="100%" height="100%">
+			Your browser does not support HTML5 Canvas.
+		</canvas>
+		<div id="work0" class="timeEvent upBlock" style="width: 411px">
+			<div style="float: left; margin-right: 10px;"><img src="image/Thumbnails/Work.png"></img></div>
+			<div style="overflow: auto"><h1>
+				2011.Apr - 2013.Apr<br>
+				創見資訊股份有限公司  研發工程師<br></h1>
+				<div class="description"><ul>
+					<li>負責隨機存取記憶體(RAM)量產工具、測試軟體維護與開發，產線問題排除
+					<li>開發筆電型記憶體快速篩檢程式，攔阻Intel Sandy Brigde系列CPU初期相容性問題
+					<li>開發產品檢測錯誤紀錄功能，縮短產線維修覆判時間15~20min/pic
+					<li>開發測試平台使用次數統計工具，有效降低測試治具汰換率			
+			</ul></div></div>
+			<div style="height: 15px; padding: 0;"></div>
+		</div>
+		<div id="work1" class="timeEvent upBlock" style="width: 411px">
+			<div style="float: left; margin-right: 10px;"><img src="image/Thumbnails/Work.png"></img></div>
+			<div style="overflow: auto"><h1>
+				2010.Nov - 2011.Apr<br>
+				創見資訊股份有限公司  FAE(應用工程師)<br></h1>
+				<div class="description"><ul>
+					<li>負責RAM、USB隨身碟系列產品，國內通路商、終端用戶問題解決，全球技術支援信箱回覆
+					<li>開發競爭對手資料自動挖掘程式，每週自動彙整200,000餘筆相容性資料
+			</ul></div></div>
+			<div style="height: 15px; padding: 0;"></div>
+		</div>
+		<div id="school0" class="timeEvent upBlock" style="width: 440px">
+			<div style="float: left; margin-right: 10px;"><img src="image/Thumbnails/Grad.png"></img></div>
+			<div style="overflow: auto"><h1>
+				2007.Sep - 2009.Aug<br>
+				國立中興大學資訊科學與工程研究所　碩士<br></h1>
+				<div class="description"><ul>
+					<li>學位論文:<br>解可滿足性問題之混合式基因演算法
+					<li>A Hybrid Genetic Algorithm for the<br>Maximum Satisfiability Problem,<br>Recent Trends in Applied A.I.,<br>vol. 7906, pp 112-120
+					<li>解可滿足性問題之新區域搜尋演算法, Proceedings of 2009 National Computer Symposium
+			</ul></div></div>
+			<div style="height: 15px; padding: 0;"></div>
+		</div>
+		<div id="school1" class="timeEvent upBlock" style="width: 420px">
+			<div style="float: left; margin-right: 10px;"><img src="image/Thumbnails/Grad.png"></img></div>
+			<div style="overflow: auto"><h1>
+				2003.Sep - 2007.Aug<br>
+				國立中興大學資訊科學與工程學系　學士<br></h1>
+			</div>
+			<div style="height: 15px; padding: 0;"></div>
+		</div>
+		<div id="game0" class="timeEvent downBlock" style="width: 468px;">
+			<div style="overflow: auto"><h1><a href="http://tw.battle.net/sc2/zh/blog/12426484/" target="_blink">...更多的水晶塔！</a> (2014)</h1></div>
+			<div class="description" style="width: 100%;">
+				<img id="game0thumb" style="float:right; margin-left: 10px;" src="image/Thumbnails/YMCAP.jpg"></img>
+				<div><ul>
+					<li>使用 StarCraft II Editor 獨立製作
+					<li>榮獲台灣暴雪《自訂地圖競賽II》大賽優勝
+			</ul></div></div>
+			<div style="height: 15px; padding: 0; clear: both;"></div>
+		</div>
+		<div id="game1" class="timeEvent downBlock" style="width: 511px">
+			<div style="overflow: auto"><h1><a href="http://fgj.igda.jp/dokuwiki/doku.php?id=team:taipeiiii_e" target="_blink">遊びはトイレのあとで</a> (2013)</h1></div>
+			<div class="description" style="width: 100%;">
+				<img id="game1thumb" style="float: right; margin-left: 10px;" src="image/Thumbnails/Toilet.jpg"></img>
+				<div><ul>
+					<li>Fukushima Game Jam 2013 活動成果
+					<li>負責角色控制、(部分)關卡障礙物動作、程式整合、Wiki頁面編寫
+			</ul></div></div>
+			<div style="height: 15px; padding: 0; clear: both;"></div>
+		</div>
+		<div id="game2" class="timeEvent downBlock" style="width: 450px">
+			<div style="overflow: auto"><h1><a href="http://alimencave.blogspot.tw/2013/05/blog-post_28.html" target="_blink">Rally-Man</a> (2013)</h1></div>
+			<div class="description" style="width: 100%;">
+				<img id="game2thumb" style="float: right; margin-left: 10px;" src="image/Thumbnails/Rally.jpg"></img>
+				<div><ul>
+					<li>動畫《Cowboy Bebop》同人遊戲
+					<li>初探Unity3D工作環境
+			</ul></div></div>
+			<div style="height: 15px; padding: 0; clear: both;"></div>
+		</div>
+		<div id="game3" class="timeEvent downBlock" style="width: 460px">
+			<div style="overflow: auto"><h1><a href="http://alimencave.blogspot.tw/2013/05/np-lab.html" target="_blink">NP Lab: Coloring Problem</a> (2013)</h1></div>
+			<div class="description" style="width: 100%;">
+				<img id="game3thumb" style="float: right; margin-left: 10px;" src="image/Thumbnails/NPLab.jpg"></img>
+				<div><ul>
+					<li>HTML5 + Javascript綜合習作
+					<li>實作二維二骨骼反向動力學解算
+			</ul></div></div>
+			<div style="height: 15px; padding: 0; clear: both;"></div>
+		</div>
+		<div id="game4" class="timeEvent downBlock" style="width: 496px">
+			<div style="overflow: auto"><h1><a href="http://alimencave.blogspot.tw/2012/02/05lbslua-based-barrage-system-ver05.html" target="_blink">0.5 Lbs</a> (2012)</h1></div>
+				<div class="description" style="width: 100%;">
+				<img id="game4thumb" style="float: right; margin-left: 10px;" src="image/Thumbnails/Bullets.jpg"></img>
+				<div><ul>
+					<li>嵌入Lua引擎實作彈幕腳本描述系統
+					<li>利用OpenGL 2D + GLUT撰寫使用者介面
+			</ul></div></div>
+			<div style="height: 15px; padding: 0; clear: both;"></div>
+		</div>
+		<div id="game5" class="timeEvent downBlock" style="width: 511px">
+			<div style="overflow: auto"><h1>Elemard Dream (2011)</h1></div>
+			<div class="description" style="width: 100%;">
+				<img id="game5thumb" style="float: right; margin-left: 10px;" src="image/Thumbnails/Dream.jpg"></img>
+				<div><ul>
+					<li>DirectX 10為基礎的3D遊戲引擎試作
+					<li>利用geometry shaders自動生成shadow volume
+					<li>實作bone animation
+					<li>利用MAXScript從3DS max輸出自定格式的模型檔案
+			</ul></div></div>
+			<div style="height: 15px; padding: 0; clear: both;"></div>
+		</div>
+		<div id="game6" class="timeEvent downBlock" style="width: 408px">
+			<div style="overflow: auto;"><h1>Museum (2008)</h1></div>
+			<div class="description" style="width: 100%;">
+				<img id="game6thumb" style="float: right; margin-left: 10px;" src="image/Thumbnails/Museum.jpg"></img>
+				<div><ul>
+					<li>OpenGL 3D + GLUT習做
+					<li>可讀入自定格式的模型檔案
+			</ul></div></div>
+			<div style="height: 15px; padding: 0; clear: both;"></div>
+		</div>
+	</div>
+	<script>
+		T$('game0thumb').onclick = function() {TINY.box.show("<img src='image/YMCAP.jpg' width='800' height='600' alt='' />", 0, 0, 0, 1);}
+		T$('game1thumb').onclick = function() {TINY.box.show("<img src='image/Toilet.jpg' width='765' height='411' alt='' />", 0, 0, 0, 1);}
+		T$('game2thumb').onclick = function() {TINY.box.show("<img src='image/Rally.jpg' width='797' height='795' alt='' />", 0, 0, 0, 1);}
+		T$('game3thumb').onclick = function() {TINY.box.show("<img src='image/NPLab.jpg' width='800' height='480' alt='' />", 0, 0, 0, 1);}
+		T$('game4thumb').onclick = function() {TINY.box.show("<img src='image/Bullets.jpg' width='800' height='600' alt='' />", 0, 0, 0, 1);}
+		T$('game5thumb').onclick = function() {TINY.box.show("<img src='image/Dream.jpg' width='800' height='600' alt='' />", 0, 0, 0, 1);}
+		T$('game6thumb').onclick = function() {TINY.box.show("<img src='image/Museum.jpg' width='800' height='600' alt='' />", 0, 0, 0, 1);}
+	</script>
+</body>
 </html>
