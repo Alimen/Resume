@@ -29,10 +29,10 @@ var gameLogic = (function() {
 	}
 
 	function reset() {
-		screenX = 0;
-		avatarPx = 410;
+		screenX = -2300;
+		avatarPx = 2710;
 		avatarPy = 0;
-		avatarNx = 410;
+		avatarNx = 2710;
 		avatarNy = 0;
 		speedPy = 0;
 		speedNy = 0;
@@ -41,6 +41,9 @@ var gameLogic = (function() {
 		keyRight = false;
 		keyUp = false;
 		chasing = 0;
+
+		level.updateTextBlocks(screenX, avatarPx, avatarNx);
+		$(".timeEvent").show();
 	}
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -70,7 +73,16 @@ var gameLogic = (function() {
 			keyRight = true;
 			chasing = 2;
 		}
-		if(e.keyCode == 38) {
+		if(e.keyCode == 38 && keyUp == false) {
+			var res;
+			res = level.collideTest(avatarPx, avatarPy, true, 3, moveSpeed);
+			if(res < moveSpeed) {
+				speedPy = 50;
+			}
+			res = level.collideTest(avatarNx, avatarNy, false, 1, moveSpeed);
+			if(res < moveSpeed) {
+				speedNy = -50;
+			}
 			keyUp = true;
 		}
 	}
@@ -87,13 +99,15 @@ var gameLogic = (function() {
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-	// Object speed settings
-	const moveSpeed = 12;
-	const chaseSpeed = 50;
-	const gP = -5;
-	const gN = 5;
+	// Object speed constants
+	var moveSpeed = 12;
+	var chaseSpeed = 50;
+	var gP = -5;
+	var gN = 5;
+	var stageWidth = 11000;
 
 	function push() {
+		console.log(avatarPx);
 		var res;
 
 		// Handle left / right movements
@@ -118,15 +132,40 @@ var gameLogic = (function() {
 			}
 		}
 
-		// Handle jump movements
-		if(keyUp) {
-			res = level.collideTest(avatarPx, avatarPy, true, 3, moveSpeed);
-			if(res < moveSpeed) {
-				speedPy = 50;
+		// Teleporting
+		var left, right;
+		var dist = vector(avatarPx, avatarNx);
+		if(dist < 0) {
+			left = avatarNx;
+			right = avatarPx;
+		} else {
+			left = avatarPx;
+			right = avatarNx;
+		}
+		if(avatarPx > stageWidth-100) {
+			if(avatarPx == right) {
+				avatarPx = 2400;
+				screenX = (env.screenWidth-400)-avatarPx;
+				if(Math.abs(dist) < env.screenWidth-400) {
+					avatarNx = avatarPx + dist;
+				} else {
+					avatarNx = avatarPx - env.screenWidth;
+				}
+			} else {
+				avatarPx = 2400;
 			}
-			res = level.collideTest(avatarNx, avatarNy, false, 1, moveSpeed);
-			if(res < moveSpeed) {
-				speedNy = -50;
+		}
+		if(avatarNx > stageWidth-100) {
+			if(avatarNx == right) {
+				avatarNx = 2400;
+				screenX = (env.screenWidth-400)-avatarNx;
+				if(Math.abs(dist) < env.screenWidth-400) {
+					avatarPx = avatarNx - dist;
+				} else {
+					avatarPx = avatarNx - env.screenWidth;
+				}
+			} else {
+				avatarNx = 2400;
 			}
 		}
 
@@ -169,32 +208,41 @@ var gameLogic = (function() {
 		}
 
 		// Handle screenX movements
+		dist = vector(avatarPx, avatarNx);
+		if(dist < 0) {
+			left = avatarNx;
+			right = avatarPx;
+		} else {
+			left = avatarPx;
+			right = avatarNx;
+		}
+
 		var target, amount;
-		if(chasing == 1) {
-			if(avatarPx < avatarNx) {
-				target = avatarPx;
+		if(chasing == 1 && left+screenX < 400) {
+			target = 400 - left;
+			amount = vector(screenX, target);
+			if(amount > chaseSpeed) {
+				amount = chaseSpeed;
+			}
+			screenX += amount;
+		} else if(chasing == 2 && right+screenX > env.screenWidth-400) {
+			target = (env.screenWidth-400) - right;
+			amount = vector(screenX, target);
+			if((-1)*amount > chaseSpeed) {
+				amount = (-1)*chaseSpeed;
+			}
+			screenX += amount;
+		}
+	}
+
+	function vector(a, b) {
+		if(Math.abs(b-a) < stageWidth/2) {
+			return (b-a);
+		} else {
+			if(a > b) {
+				return (b-a+stageWidth);
 			} else {
-				target = avatarNx;
-			}
-			if(target+screenX < 400) {
-				amount = 400-(target+screenX);
-				if(amount > chaseSpeed) {
-					amount = chaseSpeed;
-				}
-				screenX += amount;
-			}
-		} else if(chasing == 2) {
-			if(avatarPx > avatarNx) {
-				target = avatarPx;
-			} else {
-				target = avatarNx;
-			}
-			if(target+screenX > env.screenWidth-400) {
-				amount = (target+screenX)-(env.screenWidth-400);
-				if(amount > chaseSpeed) {
-					amount = chaseSpeed;
-				}
-				screenX -= amount;
+				return (b-a-stageWidth);
 			}
 		}
 	}
