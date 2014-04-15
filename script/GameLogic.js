@@ -29,10 +29,10 @@ var gameLogic = (function() {
 	}
 
 	function reset() {
-		screenX = -1200;
-		avatarPx = 1610;
+		screenX = -2300;
+		avatarPx = 2710;
 		avatarPy = 0;
-		avatarNx = 1610;
+		avatarNx = 2710;
 		avatarNy = 0;
 		speedPy = 0;
 		speedNy = 0;
@@ -104,9 +104,10 @@ var gameLogic = (function() {
 	var chaseSpeed = 50;
 	var gP = -5;
 	var gN = 5;
-	var stageWidth = 10000;
+	var stageWidth = 11000;
 
 	function push() {
+		console.log(avatarPx);
 		var res;
 
 		// Handle left / right movements
@@ -141,48 +142,30 @@ var gameLogic = (function() {
 			left = avatarPx;
 			right = avatarNx;
 		}
-		if(avatarPx < 400) {
-			if(left == avatarPx) {
-				screenX = 400 - (stageWidth - (env.screenWidth-400));
-				avatarPx = stageWidth - (env.screenWidth-400);
-				if(Math.abs(dist) < env.screenWidth) {
+		if(avatarPx > stageWidth-100) {
+			if(avatarPx == right) {
+				avatarPx = 2400;
+				screenX = (env.screenWidth-400)-avatarPx;
+				if(Math.abs(dist) < env.screenWidth-400) {
 					avatarNx = avatarPx + dist;
+				} else {
+					avatarNx = avatarPx - env.screenWidth;
 				}
 			} else {
-				avatarPx = stageWidth - (env.screenWidth-400);
+				avatarPx = 2400;
 			}
 		}
-		if(avatarNx < 400) {
-			if(left == avatarNx) {
-				screenX = 400 - (stageWidth - (env.screenWidth-400));
-				avatarNx = stageWidth - (env.screenWidth-400);
-				if(Math.abs(dist) < env.screenWidth) {
+		if(avatarNx > stageWidth-100) {
+			if(avatarNx == right) {
+				avatarNx = 2400;
+				screenX = (env.screenWidth-400)-avatarNx;
+				if(Math.abs(dist) < env.screenWidth-400) {
 					avatarPx = avatarNx - dist;
+				} else {
+					avatarPx = avatarNx - env.screenWidth;
 				}
 			} else {
-				avatarNx = stageWidth - (env.screenWidth-400);
-			}
-		}
-		if(avatarPx > stageWidth-400) {
-			if(right == avatarPx) {
-				screenX = 0;
-				avatarPx = env.screenWidth-400;
-				if(Math.abs(dist) < env.screenWidth) {
-					avatarNx = avatarPx + dist;
-				}
-			} else {
-				avatarPx = env.screenWidth-400;
-			}
-		}
-		if(avatarNx > stageWidth-400) {
-			if(right == avatarNx) {
-				screenX = 0;
-				avatarNx = env.screenWidth-400;
-				if(Math.abs(dist) < env.screenWidth) {
-					avatarPx = avatarNx - dist;
-				}
-			} else {
-				avatarNx = env.screenWidth-400;
+				avatarNx = 2400;
 			}
 		}
 
@@ -242,7 +225,6 @@ var gameLogic = (function() {
 				amount = chaseSpeed;
 			}
 			screenX += amount;
-			screenX = (screenX-stageWidth) % stageWidth;
 		} else if(chasing == 2 && right+screenX > env.screenWidth-400) {
 			target = (env.screenWidth-400) - right;
 			amount = vector(screenX, target);
@@ -250,7 +232,6 @@ var gameLogic = (function() {
 				amount = (-1)*chaseSpeed;
 			}
 			screenX += amount;
-			screenX = (screenX-stageWidth) % stageWidth;
 		}
 	}
 

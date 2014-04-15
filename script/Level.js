@@ -18,19 +18,19 @@ var level = (function() {
 
 	// Text block parameters (#id, position-x, expanded)
 	var textBlocksP = [
-		["#work0", 2800, false],
-		["#work1", 4230, false],
-		["#school0", 6000, false],
-		["#school1", 6500, false]
+		["#work0", 3900, false],
+		["#work1", 5330, false],
+		["#school0", 7100, false],
+		["#school1", 7600, false]
 	];
 	var textBlocksN = [
-		["#game0", 2380, false],
-		["#game1", 2900, false],
-		["#game2", 3730, false],
-		["#game3", 4230, false],
-		["#game4", 4740, false],
-		["#game5", 5800, false],
-		["#game6", 6380, false]
+		["#game0", 3480, false],
+		["#game1", 4000, false],
+		["#game2", 4830, false],
+		["#game3", 5330, false],
+		["#game4", 5840, false],
+		["#game5", 6900, false],
+		["#game6", 7480, false]
 	];
 
 	function updateTextBlocks(screenX, px, nx) {
@@ -79,34 +79,40 @@ var level = (function() {
 
 	// Background object parameters (image#ID position-x, position-y, width, height)
 	var bgObjects = [
-		["logo", 1700, -80, 256, 297],
-		["ins", 1700, 377, 256, 297],
-		["mountPL", 2000, 1024, 1024, 1024],
-		["mountNL", 2000, 0, 1024, 1024],
-		["mountPS", 1930, 256, 256, 256],
-		["mountNS", 1930, 0, 256, 256],
-		["mountPL", 3500, 1024, 1024, 1024],
-		["mountNL", 3500, 0, 1024, 1024],
-		["mountPL", 3800, 1024, 1024, 1024],
-		["mountNL", 3800, 0, 1024, 1024],
-		["mountPS", 3700, 256, 256, 256],
-		["mountNS", 3700, 0, 256, 256],
-		["mountPS", 4690, 256, 256, 256],
-		["mountNS", 4690, 0, 256, 256],
-		["mountPS", 5650, 256, 256, 256],
-		["mountNS", 5650, 0, 256, 256],
-		["mountPS", 6150, 256, 256, 256],
-		["mountNS", 6150, 0, 256, 256],
-		["mountPL", 6300, 1024, 1024, 1024],
-		["mountNL", 6300, 0, 1024, 1024],
-		["mountPL", 7200, 1024, 1024, 1024],
-		["mountNL", 7200, 0, 1024, 1024],
-		["mountPS", 7000, 256, 256, 256],
-		["mountNS", 7000, 0, 256, 256],
-		["mountPS", 7200, 256, 256, 256],
-		["mountNS", 7200, 0, 256, 256],
-		["flagP", 8300, 420, 70, 400],
-		["flagN", 8300, -20, 70, 400]
+		["mountPL", -160, 1024, 1024, 1024],
+		["mountNL", -160, 0, 1024, 1024],
+		["mountPS", -60, 256, 256, 256],
+		["mountNS", -60, 0, 256, 256],
+		["flagP", 940, 420, 70, 400],
+		["flagN", 940, -20, 70, 400],
+		["logo", 2800, -80, 256, 297],
+		["ins", 2810, 380, 320, 320],
+		["mountPL", 3100, 1024, 1024, 1024],
+		["mountNL", 3100, 0, 1024, 1024],
+		["mountPS", 3030, 256, 256, 256],
+		["mountNS", 3030, 0, 256, 256],
+		["mountPL", 4600, 1024, 1024, 1024],
+		["mountNL", 4600, 0, 1024, 1024],
+		["mountPL", 4900, 1024, 1024, 1024],
+		["mountNL", 4900, 0, 1024, 1024],
+		["mountPS", 4800, 256, 256, 256],
+		["mountNS", 4800, 0, 256, 256],
+		["mountPS", 5790, 256, 256, 256],
+		["mountNS", 5790, 0, 256, 256],
+		["mountPS", 6850, 256, 256, 256],
+		["mountNS", 6850, 0, 256, 256],
+		["mountPS", 7350, 256, 256, 256],
+		["mountNS", 7350, 0, 256, 256],
+		["mountPL", 7500, 1024, 1024, 1024],
+		["mountNL", 7500, 0, 1024, 1024],
+		["mountPL", 8300, 1024, 1024, 1024],
+		["mountNL", 8300, 0, 1024, 1024],
+		["mountPS", 8200, 256, 256, 256],
+		["mountNS", 8200, 0, 256, 256],
+		["mountPS", 8400, 256, 256, 256],
+		["mountNS", 8400, 0, 256, 256],
+		["flagP", 9400, 420, 70, 400],
+		["flagN", 9400, -20, 70, 400]
 	];
 
 	function getImageById(_id) {
@@ -154,41 +160,47 @@ var level = (function() {
 	// Foreground object parameters (isPositive, visible, x, y, width, height)
 	var bricks = [
 		// Positive bricks
-		[true, false, -500, 0, 11000, 100],			// floor
-		[true, true, 2100, 100, 420, 100],
-		[true, true, 2430, 200, 90, 100],
-		[true, true, 3400, 130, 50, 130],
-		[true, true, 3630, 130, 50, 130],
-		[true, true, 4900, 130, 840, 30],
-		[true, true, 5250, 100, 130, 100],
-		[true, true, 5250, 230, 230, 30],
-		[true, true, 5250, 1230, 30, 1000],
-		[true, true, 5580, 330, 30, 200],
-		[true, true, 5380, 360, 230, 30],
-		[true, true, 5610, 200, 130, 70],
-		[true, true, 6750, 100, 80, 100],
-		[true, true, 6990, 250, 80, 100],
-		[true, true, 7240, 300, 80, 100],
-		[true, true, 7460, 350, 80, 100],
-		[true, true, 7680, 400, 80, 400],
-		[true, true, 8310, 70, 50, 70],
+		[true, false, -500, 0, 12000, 100],			// floor
+		[true, true, 320, 400, 80, 400],			// repeated level 4
+		[true, true, 100, 350, 80, 100],
+		[true, true, 950, 70, 50, 70],
+		[true, true, 3200, 100, 420, 100],			// level 1
+		[true, true, 3530, 200, 90, 100],
+		[true, true, 4500, 130, 50, 130],			// level 2
+		[true, true, 4730, 130, 50, 130],
+		[true, true, 6000, 130, 840, 30],			// level 3
+		[true, true, 6350, 100, 130, 100],
+		[true, true, 6350, 230, 230, 30],
+		[true, true, 6350, 1230, 30, 1000],
+		[true, true, 6680, 330, 30, 200],
+		[true, true, 6480, 360, 230, 30],
+		[true, true, 6710, 200, 130, 70],
+		[true, true, 7850, 100, 80, 100],			// level 4
+		[true, true, 8090, 250, 80, 100],
+		[true, true, 8340, 300, 80, 100],
+		[true, true, 8560, 350, 80, 100],
+		[true, true, 8780, 400, 80, 400],
+		[true, true, 9410, 70, 50, 70],
 
 		// Negative bricks
-		[false, false, -500, 100, 11000, 100],		// floor
-		[false, true, 2180, 0, 80, 110],
-		[false, true, 3450, -70, 192, 30],
-		[false, true, 3578, -100, 64, 1024],
-		[false, true, 5250, 0, 100, 100],
-		[false, true, 5350, -210, 260, 30],
-		[false, true, 5350, 0, 30, 210],
-		[false, true, 5490, -75, 250, 30],
-		[false, true, 5710, -105, 30, 1000],
-		[false, true, 6850, 0, 80, 100],
-		[false, true, 7050, -150, 80, 100],
-		[false, true, 7240, -200, 80, 100],
-		[false, true, 7460, -250, 80, 100],
-		[false, true, 7680, 0, 80, 400],
-		[false, true, 8310, 0, 50, 70]
+		[false, false, -500, 100, 12000, 100],		// floor
+		[false, true, 320, 0, 80, 400],				// repeated level 4
+		[false, true, 100, -250, 80, 100],
+		[false, true, 950, 0, 50, 70],
+		[false, true, 3280, 0, 80, 110],			// level 1
+		[false, true, 4550, -70, 192, 30],			// level 2
+		[false, true, 4678, -100, 64, 1024],
+		[false, true, 6350, 0, 100, 100],			// level 3
+		[false, true, 6450, -210, 260, 30],
+		[false, true, 6450, 0, 30, 210],
+		[false, true, 6590, -75, 250, 30],
+		[false, true, 6810, -105, 30, 1000],
+		[false, true, 7950, 0, 80, 100],			// level 4
+		[false, true, 8150, -150, 80, 100],
+		[false, true, 8340, -200, 80, 100],
+		[false, true, 8560, -250, 80, 100],
+		[false, true, 8780, 0, 80, 400],
+		[false, true, 9410, 0, 50, 70]
 	];
 
 	// Detect collidings
