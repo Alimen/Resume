@@ -44,6 +44,8 @@ var gameLogic = (function() {
 
 		level.updateTextBlocks(screenX, avatarPx, avatarNx);
 		$(".timeEvent").show();
+		$("#switch").show();
+		$("#contact").show();
 	}
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -107,7 +109,6 @@ var gameLogic = (function() {
 	var stageWidth = 11000;
 
 	function push() {
-		console.log(avatarPx);
 		var res;
 
 		// Handle left / right movements

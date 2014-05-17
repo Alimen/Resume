@@ -18,6 +18,8 @@ var level = (function() {
 
 	// Text block parameters (#id, position-x, expanded)
 	var textBlocksP = [
+		["#switch", 2833, false],
+		["#contact", 3200, false],
 		["#work0", 3900, false],
 		["#work1", 5330, false],
 		["#school0", 7100, false],
