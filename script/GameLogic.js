@@ -44,7 +44,7 @@ var gameLogic = (function() {
 
 		level.updateTextBlocks(screenX, avatarPx, avatarNx);
 		$(".timeEvent").show();
-		$("#switch").show();
+		$("#jump").show();
 		$("#contact").show();
 	}
 

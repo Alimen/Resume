@@ -18,8 +18,8 @@ var level = (function() {
 
 	// Text block parameters (#id, position-x, expanded)
 	var textBlocksP = [
-		["#switch", 2833, false],
-		["#contact", 3200, false],
+		["#contact", 2900, false],
+		["#jump", 3210, false],
 		["#work0", 3900, false],
 		["#work1", 5330, false],
 		["#school0", 7100, false],
@@ -87,8 +87,8 @@ var level = (function() {
 		["mountNS", -60, 0, 256, 256],
 		["flagP", 940, 420, 70, 400],
 		["flagN", 940, -20, 70, 400],
-		["logo", 2800, -80, 256, 297],
-		["ins", 2810, 380, 320, 320],
+		["logo", 2580, -90, 256, 297],
+		["ins", 2550, 360, 320, 320],
 		["mountPL", 3100, 1024, 1024, 1024],
 		["mountNL", 3100, 0, 1024, 1024],
 		["mountPS", 3030, 256, 256, 256],
