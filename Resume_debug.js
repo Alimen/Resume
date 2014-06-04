@@ -268,9 +268,9 @@ var gameLogic = (function() {
 
 	function reset() {
 		screenX = -2300;
-		avatarPx = 2710;
+		avatarPx = 3110;
 		avatarPy = 0;
-		avatarNx = 2710;
+		avatarNx = 3110;
 		avatarNy = 0;
 		speedPy = 0;
 		speedNy = 0;
@@ -282,7 +282,7 @@ var gameLogic = (function() {
 
 		level.updateTextBlocks(screenX, avatarPx, avatarNx);
 		$(".timeEvent").show();
-		$("#switch").show();
+		$("#jump").show();
 		$("#contact").show();
 	}
 
@@ -545,21 +545,21 @@ var level = (function() {
 
 	// Text block parameters (#id, position-x, expanded)
 	var textBlocksP = [
-		["#switch", 2833, false],
-		["#contact", 3200, false],
-		["#work0", 3900, false],
-		["#work1", 5330, false],
-		["#school0", 7100, false],
-		["#school1", 7600, false]
+		["#contact", 3300, false],
+		["#jump", 3610, false],
+		["#work0", 4300, false],
+		["#work1", 5730, false],
+		["#school0", 7500, false],
+		["#school1", 8000, false]
 	];
 	var textBlocksN = [
-		["#game0", 3480, false],
-		["#game1", 4000, false],
-		["#game2", 4830, false],
-		["#game3", 5330, false],
-		["#game4", 5840, false],
-		["#game5", 6900, false],
-		["#game6", 7480, false]
+		["#game0", 3880, false],
+		["#game1", 4400, false],
+		["#game2", 5230, false],
+		["#game3", 5730, false],
+		["#game4", 6240, false],
+		["#game5", 7300, false],
+		["#game6", 7880, false]
 	];
 
 	function updateTextBlocks(screenX, px, nx) {
@@ -614,34 +614,34 @@ var level = (function() {
 		["mountNS", -60, 0, 256, 256],
 		["flagP", 940, 420, 70, 400],
 		["flagN", 940, -20, 70, 400],
-		["logo", 2800, -80, 256, 297],
-		["ins", 2810, 380, 320, 320],
-		["mountPL", 3100, 1024, 1024, 1024],
-		["mountNL", 3100, 0, 1024, 1024],
-		["mountPS", 3030, 256, 256, 256],
-		["mountNS", 3030, 0, 256, 256],
-		["mountPL", 4600, 1024, 1024, 1024],
-		["mountNL", 4600, 0, 1024, 1024],
-		["mountPL", 4900, 1024, 1024, 1024],
-		["mountNL", 4900, 0, 1024, 1024],
-		["mountPS", 4800, 256, 256, 256],
-		["mountNS", 4800, 0, 256, 256],
-		["mountPS", 5790, 256, 256, 256],
-		["mountNS", 5790, 0, 256, 256],
-		["mountPS", 6850, 256, 256, 256],
-		["mountNS", 6850, 0, 256, 256],
-		["mountPS", 7350, 256, 256, 256],
-		["mountNS", 7350, 0, 256, 256],
-		["mountPL", 7500, 1024, 1024, 1024],
-		["mountNL", 7500, 0, 1024, 1024],
-		["mountPL", 8300, 1024, 1024, 1024],
-		["mountNL", 8300, 0, 1024, 1024],
-		["mountPS", 8200, 256, 256, 256],
-		["mountNS", 8200, 0, 256, 256],
-		["mountPS", 8400, 256, 256, 256],
-		["mountNS", 8400, 0, 256, 256],
-		["flagP", 9400, 420, 70, 400],
-		["flagN", 9400, -20, 70, 400]
+		["logo", 2980, -90, 256, 297],
+		["ins", 2950, 360, 320, 320],
+		["mountPL", 3500, 1024, 1024, 1024],
+		["mountNL", 3500, 0, 1024, 1024],
+		["mountPS", 3430, 256, 256, 256],
+		["mountNS", 3430, 0, 256, 256],
+		["mountPL", 5000, 1024, 1024, 1024],
+		["mountNL", 5000, 0, 1024, 1024],
+		["mountPL", 5300, 1024, 1024, 1024],
+		["mountNL", 5300, 0, 1024, 1024],
+		["mountPS", 5200, 256, 256, 256],
+		["mountNS", 5200, 0, 256, 256],
+		["mountPS", 6190, 256, 256, 256],
+		["mountNS", 6190, 0, 256, 256],
+		["mountPS", 7250, 256, 256, 256],
+		["mountNS", 7250, 0, 256, 256],
+		["mountPS", 7750, 256, 256, 256],
+		["mountNS", 7750, 0, 256, 256],
+		["mountPL", 7900, 1024, 1024, 1024],
+		["mountNL", 7900, 0, 1024, 1024],
+		["mountPL", 8700, 1024, 1024, 1024],
+		["mountNL", 8700, 0, 1024, 1024],
+		["mountPS", 8600, 256, 256, 256],
+		["mountNS", 8600, 0, 256, 256],
+		["mountPS", 8800, 256, 256, 256],
+		["mountNS", 8800, 0, 256, 256],
+		["flagP", 9800, 420, 70, 400],
+		["flagN", 9800, -20, 70, 400]
 	];
 
 	function getImageById(_id) {
@@ -693,43 +693,43 @@ var level = (function() {
 		[true, true, 320, 400, 80, 400],			// repeated level 4
 		[true, true, 100, 350, 80, 100],
 		[true, true, 950, 70, 50, 70],
-		[true, true, 3200, 100, 420, 100],			// level 1
-		[true, true, 3530, 200, 90, 100],
-		[true, true, 4500, 130, 50, 130],			// level 2
-		[true, true, 4730, 130, 50, 130],
-		[true, true, 6000, 130, 840, 30],			// level 3
-		[true, true, 6350, 100, 130, 100],
-		[true, true, 6350, 230, 230, 30],
-		[true, true, 6350, 1230, 30, 1000],
-		[true, true, 6680, 330, 30, 200],
-		[true, true, 6480, 360, 230, 30],
-		[true, true, 6710, 200, 130, 70],
-		[true, true, 7850, 100, 80, 100],			// level 4
-		[true, true, 8090, 250, 80, 100],
-		[true, true, 8340, 300, 80, 100],
-		[true, true, 8560, 350, 80, 100],
-		[true, true, 8780, 400, 80, 400],
-		[true, true, 9410, 70, 50, 70],
+		[true, true, 3600, 100, 420, 100],			// level 1
+		[true, true, 3930, 200, 90, 100],
+		[true, true, 4900, 130, 50, 130],			// level 2
+		[true, true, 5130, 130, 50, 130],
+		[true, true, 6400, 130, 840, 30],			// level 3
+		[true, true, 6750, 100, 130, 100],
+		[true, true, 6750, 230, 230, 30],
+		[true, true, 6750, 1230, 30, 1000],
+		[true, true, 7080, 330, 30, 200],
+		[true, true, 6880, 360, 230, 30],
+		[true, true, 7110, 200, 130, 70],
+		[true, true, 8250, 100, 80, 100],			// level 4
+		[true, true, 8490, 250, 80, 100],
+		[true, true, 8740, 300, 80, 100],
+		[true, true, 8960, 350, 80, 100],
+		[true, true, 9180, 400, 80, 400],
+		[true, true, 9810, 70, 50, 70],
 
 		// Negative bricks
 		[false, false, -500, 100, 12000, 100],		// floor
 		[false, true, 320, 0, 80, 400],				// repeated level 4
 		[false, true, 100, -250, 80, 100],
 		[false, true, 950, 0, 50, 70],
-		[false, true, 3280, 0, 80, 110],			// level 1
-		[false, true, 4550, -70, 192, 30],			// level 2
-		[false, true, 4678, -100, 64, 1024],
-		[false, true, 6350, 0, 100, 100],			// level 3
-		[false, true, 6450, -210, 260, 30],
-		[false, true, 6450, 0, 30, 210],
-		[false, true, 6590, -75, 250, 30],
-		[false, true, 6810, -105, 30, 1000],
-		[false, true, 7950, 0, 80, 100],			// level 4
-		[false, true, 8150, -150, 80, 100],
-		[false, true, 8340, -200, 80, 100],
-		[false, true, 8560, -250, 80, 100],
-		[false, true, 8780, 0, 80, 400],
-		[false, true, 9410, 0, 50, 70]
+		[false, true, 3680, 0, 80, 110],			// level 1
+		[false, true, 4950, -70, 192, 30],			// level 2
+		[false, true, 5078, -100, 64, 1024],
+		[false, true, 6750, 0, 100, 100],			// level 3
+		[false, true, 6850, -210, 260, 30],
+		[false, true, 6850, 0, 30, 210],
+		[false, true, 6990, -75, 250, 30],
+		[false, true, 7210, -105, 30, 1000],
+		[false, true, 8350, 0, 80, 100],			// level 4
+		[false, true, 8550, -150, 80, 100],
+		[false, true, 8740, -200, 80, 100],
+		[false, true, 8960, -250, 80, 100],
+		[false, true, 9180, 0, 80, 400],
+		[false, true, 9810, 0, 50, 70]
 	];
 
 	// Detect collidings

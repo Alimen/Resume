@@ -30,9 +30,9 @@ var gameLogic = (function() {
 
 	function reset() {
 		screenX = -2300;
-		avatarPx = 2710;
+		avatarPx = 3110;
 		avatarPy = 0;
-		avatarNx = 2710;
+		avatarNx = 3110;
 		avatarNy = 0;
 		speedPy = 0;
 		speedNy = 0;
